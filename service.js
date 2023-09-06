@@ -11,6 +11,6 @@ ws.on('close', function close() {
   // จะทำงานเมื่อปิด Connection ในตัวอย่างคือ ปิด Browser
     console.log('disconnected');
   });
-//ws.send('init message to client');
+ws.send('init message to client');
   // ส่ง data ไปที่ client เชื่อมกับ websocket server นี้
 });

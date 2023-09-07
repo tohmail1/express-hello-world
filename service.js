@@ -1,5 +1,5 @@
-import WebSocket from 'ws';
-
+//import WebSocket from 'ws';
+const WebSocket = require("ws");
 const ws = new WebSocket('ws://www.host.com/path');
 
 ws.on('error', console.error);

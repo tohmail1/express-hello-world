@@ -5,8 +5,8 @@ import { WebSocketServer } from 'ws';
 const wss = new WebSocketServer({ port: 80 });
 
 wss.on('connection', function connection(ws, req) {
-  console.log('connection from remoteAddress: %s', ws._socket.remoteAddress);
-  console.log('connection from remotePort: %s', ws._socket.remotePort);
+  console.log('connection from remoteAddress: %s', ws.socket.remoteAddress);
+  console.log('connection from remotePort: %s', ws.socket.remotePort);
   
   ws.on('error', console.error);
 

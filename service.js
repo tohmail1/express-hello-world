@@ -16,7 +16,8 @@ wss.on('connection', function connection(ws, req) {
           if (client !== ws && client.readyState === WebSocket.OPEN) {
               console.log('send');
               //client.send(data, { binary: isBinary });
-              client.send('{ remoteAddress: %s, remotePort: %s }', data, req.socket.remotePort);
+              var sendText = `remoteAddress: ${data}, remotePort: ${req.socket.remotePort}`;
+                client.send(sendText);
           }
       });
   });

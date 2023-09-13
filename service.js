@@ -1,6 +1,6 @@
 //import WebSocket from 'ws';
 //const WebSocketServer = require("ws");
-import { WebSocketServer } from 'ws';
+import WebSocket, { WebSocketServer } from 'ws';
 //const ws = new WebSocket('ws://www.host.com/path');
 const wss = new WebSocketServer({ port: 80 });
 
@@ -13,13 +13,13 @@ wss.on('connection', function connection(ws, req) {
   ws.on('message', function message(data, isBinary) {
     console.log('message: %s', data);
       wss.clients.forEach(function each(client) {
-          //if (client !== ws && client.readyState === WebSocketServer.OPEN) {
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
               console.log('send');
               //client.send(data, { binary: isBinary });
               var sendText = `remoteAddress: ${data}, remotePort: ${req.socket.remotePort}`;
               client.send(sendText);
               console.log('send: %s', sendText);
-          //}
+          }
       });
   });
     

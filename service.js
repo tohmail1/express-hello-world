@@ -13,7 +13,7 @@ wss.on('connection', function connection(ws, req) {
   ws.on('message', function message(data, isBinary) {
     console.log('message: %s', data);
       wss.clients.forEach(function each(client) {
-          if (client !== ws && client.readyState === WebSocket.OPEN) {
+          if (client !== ws && client.readyState === WebSocketServer.OPEN) {
               console.log('send');
               //client.send(data, { binary: isBinary });
               var sendText = `remoteAddress: ${data}, remotePort: ${req.socket.remotePort}`;

@@ -11,6 +11,7 @@ wss.on('connection', function connection(ws, req) {
   ws.on('error', console.error);
 
   ws.on('message', function message(data, isBinary) {
+    console.log('message: %s', data);
       wss.clients.forEach(function each(client) {
           if (client !== ws && client.readyState === WebSocket.OPEN) {
               console.log('send');
@@ -20,5 +21,5 @@ wss.on('connection', function connection(ws, req) {
       });
   });
     
-  ws.send('You successfully connected to the websocket 1.');
+  ws.send('connected');
 });
